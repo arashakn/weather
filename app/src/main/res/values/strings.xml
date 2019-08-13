@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Tweather</string>
+    <string name="current_temperature">Current temperature</string>
+    <string name="temperature">%1$f °C / %2$f °F</string>
+    <string name="refresh_cap">Refresh</string>
+    <string name="error_message">something went wrong ...</string>
+
+</resources>
