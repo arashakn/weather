@@ -30,6 +30,11 @@ class WeatherActivity : AppCompatActivity() {
 
     private fun setupViews(){
         weatherViewModel = ViewModelProviders.of(this).get(WeatherViewModel::class.java)
+        btn_median_next_five_days.setOnClickListener({
+            for(i in 1..5) {
+                weatherViewModel.fetchFutureWeather(i.getFutureWeatherUrl())
+            }
+        })
     }
 
 

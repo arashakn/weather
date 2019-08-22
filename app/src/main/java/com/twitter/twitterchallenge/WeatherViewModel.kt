@@ -47,11 +47,39 @@ class WeatherViewModel  : ViewModel(){
         }
     }
 
+
+    fun fetchFutureWeather(url : String){
+        error.value = false
+        progress.value = true
+        try {
+            val disposable = WeatherAPIClient.getWeatherService().getFutureWeather(url)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(object  : DisposableSingleObserver<WeatherCondition>(){
+                    override fun onSuccess(value: WeatherCondition?) {
+                        weatherLiveData.value = value
+                        progress.value = false
+                    }
+
+                    override fun onError(e: Throwable?) {
+                        error.value = true
+                        progress.value = false
+                    }
+                })
+            compositeDisposable.add(disposable)
+        }catch (e : RuntimeException){
+            error.value = true
+            progress.value = false
+        }
+    }
+
+
     override fun onCleared() {
         super.onCleared()
         compositeDisposable?.let {
             compositeDisposable.clear()
         }
     }
+
 
 }

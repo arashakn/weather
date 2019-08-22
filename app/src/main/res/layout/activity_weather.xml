@@ -69,4 +69,13 @@
             android:id="@+id/progress_circular"
             android:layout_centerInParent="true"/>
 
+    <Button
+            android:id="@+id/btn_median_next_five_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:text="@string/btn_median_text"
+    />
+
 </RelativeLayout>

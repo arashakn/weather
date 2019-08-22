@@ -27,7 +27,6 @@ object WeatherAPIClient {
         val httpClient = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
             .readTimeout(60,  TimeUnit.SECONDS)
-            .readTimeout(60,  TimeUnit.SECONDS)
             .cache(myCache)
             .addInterceptor { chain ->
                 var request = chain.request()
