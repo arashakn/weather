@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.twitter.twitterchallenge.newtwork.WeatherAPIClient
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.rxkotlin.Observables
+import io.reactivex.rxkotlin.toObservable
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_weather.*
 import java.lang.RuntimeException
@@ -22,6 +24,15 @@ class WeatherActivity : AppCompatActivity() {
         setContentView(R.layout.activity_weather)
         setupViews()
         observe()
+
+        val observable1 = listOf(1, 2, 3).toObservable()
+        val observable2 = listOf(4, 5, 6).toObservable()
+        val observable4 = listOf(4, 5, 6).toObservable()
+
+        val zipped = Observables
+            .zip(observable1, observable2, observable4 ) { o1, o2 , o3 -> o1 * o2 *o3}
+
+        zipped.subscribe({println(it)})
     }
 
     companion object{
@@ -31,9 +42,11 @@ class WeatherActivity : AppCompatActivity() {
     private fun setupViews(){
         weatherViewModel = ViewModelProviders.of(this).get(WeatherViewModel::class.java)
         btn_median_next_five_days.setOnClickListener({
-            for(i in 1..5) {
-                weatherViewModel.fetchFutureWeather(i.getFutureWeatherUrl())
-            }
+//            for(i in 1..5) {
+//                weatherViewModel.fetchFutureWeather(i.getFutureWeatherUrl())
+//            }
+
+            weatherViewModel.getNextNDaysObservable()
         })
     }
 
