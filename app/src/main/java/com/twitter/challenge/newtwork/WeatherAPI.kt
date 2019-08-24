@@ -1,8 +1,6 @@
-package com.twitter.twitterchallenge.newtwork
+package com.twitter.challenge.newtwork
 
-import com.twitter.twitterchallenge.model.Weather
-import com.twitter.twitterchallenge.model.WeatherCondition
-import io.reactivex.Observable
+import com.twitter.challenge.model.WeatherCondition
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Url

@@ -1,9 +1,9 @@
-package com.twitter.twitterchallenge.newtwork
+package com.twitter.challenge.newtwork
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import com.twitter.twitterchallenge.WeatherApplication
+import com.twitter.challenge.WeatherApplication
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

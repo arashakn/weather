@@ -1,4 +1,4 @@
-package com.twitter.twitterchallenge
+package com.twitter.challenge
 
 fun Int.getFutureWeatherUrl() = "future_${this.toString()}.json"
 

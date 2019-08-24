@@ -1,4 +1,4 @@
-package com.twitter.twitterchallenge.model
+package com.twitter.challenge.model
 
 import com.google.gson.annotations.SerializedName
 

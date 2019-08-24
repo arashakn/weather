@@ -1,18 +1,12 @@
-package com.twitter.twitterchallenge
+package com.twitter.challenge
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.twitter.twitterchallenge.model.Weather
-import com.twitter.twitterchallenge.model.WeatherCondition
-import com.twitter.twitterchallenge.newtwork.WeatherAPIClient
-import io.reactivex.Observable
-import io.reactivex.Single
+import com.twitter.challenge.model.WeatherCondition
+import com.twitter.challenge.newtwork.WeatherAPIClient
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.observers.DisposableSingleObserver
-import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.Singles
-import io.reactivex.rxkotlin.subscribeBy
 import io.reactivex.schedulers.Schedulers
 import java.lang.RuntimeException
 import java.util.ArrayList

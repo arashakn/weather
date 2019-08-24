@@ -1,6 +1,5 @@
-package com.twitter.twitterchallenge
+package com.twitter.challenge
 
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
