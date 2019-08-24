@@ -47,7 +47,6 @@ class WeatherViewModel  : ViewModel(){
     }
 
     fun getNextNDaysObservable(){
-        progress.value = true
 
         val disposable1 = WeatherAPIClient.getWeatherService().getFutureWeather(1.getFutureWeatherUrl())
         val disposable2 = WeatherAPIClient.getWeatherService().getFutureWeather(2.getFutureWeatherUrl())
