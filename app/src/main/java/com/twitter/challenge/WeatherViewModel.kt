@@ -47,39 +47,40 @@ class WeatherViewModel  : ViewModel(){
     }
 
     fun getNextNDaysObservable(){
+        progress.value = true
 
-            val disposable1 = WeatherAPIClient.getWeatherService().getFutureWeather(1.getFutureWeatherUrl())
-            val disposable2 = WeatherAPIClient.getWeatherService().getFutureWeather(2.getFutureWeatherUrl())
-            val disposable3 = WeatherAPIClient.getWeatherService().getFutureWeather(3.getFutureWeatherUrl())
-            val disposable4 = WeatherAPIClient.getWeatherService().getFutureWeather(4.getFutureWeatherUrl())
-            val disposable5 = WeatherAPIClient.getWeatherService().getFutureWeather(5.getFutureWeatherUrl())
+        val disposable1 = WeatherAPIClient.getWeatherService().getFutureWeather(1.getFutureWeatherUrl())
+        val disposable2 = WeatherAPIClient.getWeatherService().getFutureWeather(2.getFutureWeatherUrl())
+        val disposable3 = WeatherAPIClient.getWeatherService().getFutureWeather(3.getFutureWeatherUrl())
+        val disposable4 = WeatherAPIClient.getWeatherService().getFutureWeather(4.getFutureWeatherUrl())
+        val disposable5 = WeatherAPIClient.getWeatherService().getFutureWeather(5.getFutureWeatherUrl())
 
-            val zipped = Singles.zip(disposable1,disposable2 ,disposable3, disposable4,disposable5){
-                    disposable1,disposable2 ,disposable3, disposable4,disposable5 ->
-                    val temps = ArrayList<Float>()
-                    temps.add(disposable1.weather.temp)
-                    temps.add(disposable2.weather.temp)
-                    temps.add(disposable3.weather.temp)
-                    temps.add(disposable4.weather.temp)
-                    temps.add(disposable5.weather.temp)
-                    calculateSD(temps.toFloatArray())
-            }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                    { result ->
-                        progress.value = false
-                        sdLiveData.value = result
-
-
-                    },
-                    { e ->
-                        error.value = true
-                        progress.value = false
-                    }
-                )
-        compositeDisposable.add(zipped)
+        val zipped = Singles.zip(disposable1,disposable2 ,disposable3, disposable4,disposable5){
+                disposable1,disposable2 ,disposable3, disposable4,disposable5 ->
+            val temps = ArrayList<Float>()
+            temps.add(disposable1.weather.temp)
+            temps.add(disposable2.weather.temp)
+            temps.add(disposable3.weather.temp)
+            temps.add(disposable4.weather.temp)
+            temps.add(disposable5.weather.temp)
+            calculateSD(temps.toFloatArray())
         }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                { result ->
+                    progress.value = false
+                    sdLiveData.value = result
+
+
+                },
+                { e ->
+                    error.value = true
+                    progress.value = false
+                }
+            )
+        compositeDisposable.add(zipped)
+    }
 
     override fun onCleared() {
         super.onCleared()

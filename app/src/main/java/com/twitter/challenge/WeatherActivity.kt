@@ -30,38 +30,38 @@ class WeatherActivity : AppCompatActivity() {
     private  fun observe(){
         weatherViewModel.weatherLiveData.observe(this, Observer {
 
-                it?.let {
-                    cv_current.visibility = View.VISIBLE
-                    tv_error.visibility = View.GONE
+            it?.let {
+                cv_current.visibility = View.VISIBLE
+                tv_error.visibility = View.GONE
 
-                    it.name?.let {
-                        tv_location.text = it.toString()
-                    }
-
-                    it.weather?.temp?.let {
-                        tv_weather_temp.visibility = View.VISIBLE
-                        tv_weather_temp.text = "Temperature : ${it.toString()} \u2109" + " \\ " +"${TemperatureConverter.celsiusToFahrenheit(it).toInt()} \u2103"
-                                }?:kotlin.run {
-                                    tv_weather_temp.visibility = View.GONE
-                                }
-                    it.wind?.speed?.let {
-                        tv_wind_speed.visibility = View.VISIBLE
-                        tv_wind_speed.text ="Wind Speed : ${it.toString()}"
-                    }?:kotlin.run {
-                        tv_wind_speed.visibility = View.GONE
-                    }
-                    it.clouds?.cloudiness?.let{
-                        iv_sunny_cloudy.visibility = View.VISIBLE
-                        when(it <=50){
-                            true -> iv_sunny_cloudy.setImageResource(R.drawable.ic_wb_sunny)
-                            false -> iv_sunny_cloudy.setImageResource(R.drawable.ic_cloud)
-                        }
-                    }?:kotlin.run {
-                        iv_sunny_cloudy.visibility = View.GONE
-                    }
-                } ?:kotlin.run{
-                    cv_current.visibility = View.GONE
+                it.name?.let {
+                    tv_location.text = it.toString()
                 }
+
+                it.weather?.temp?.let {
+                    tv_weather_temp.visibility = View.VISIBLE
+                    tv_weather_temp.text = "Temperature : ${it.toString()} \u2109" + " \\ " +"${TemperatureConverter.celsiusToFahrenheit(it).toInt()} \u2103"
+                }?:kotlin.run {
+                    tv_weather_temp.visibility = View.GONE
+                }
+                it.wind?.speed?.let {
+                    tv_wind_speed.visibility = View.VISIBLE
+                    tv_wind_speed.text ="Wind Speed : ${it.toString()}"
+                }?:kotlin.run {
+                    tv_wind_speed.visibility = View.GONE
+                }
+                it.clouds?.cloudiness?.let{
+                    iv_sunny_cloudy.visibility = View.VISIBLE
+                    when(it <=50){
+                        true -> iv_sunny_cloudy.setImageResource(R.drawable.ic_wb_sunny)
+                        false -> iv_sunny_cloudy.setImageResource(R.drawable.ic_cloud)
+                    }
+                }?:kotlin.run {
+                    iv_sunny_cloudy.visibility = View.GONE
+                }
+            } ?:kotlin.run{
+                cv_current.visibility = View.GONE
+            }
         })
 
         weatherViewModel.error.observe(this, Observer {

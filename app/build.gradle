@@ -44,6 +44,7 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.cardview:cardview:1.0.0'
 
+
     implementation "com.squareup.retrofit2:retrofit:$ret_version"
     implementation "com.squareup.retrofit2:converter-gson:$ret_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$ret_version"
@@ -54,6 +55,7 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxjava:$rx_java_version"
 
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_ext_ver"
+
 
     implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
 }
