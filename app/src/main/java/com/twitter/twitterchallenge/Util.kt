@@ -7,7 +7,6 @@ fun calculateSD(numArray: FloatArray): Double {
     var standardDeviation = 0.0
     val length = numArray.size
     for (num in numArray) {
-        println("$num << ")
         sum += num.toDouble()
     }
     val mean = sum / length
@@ -16,3 +15,4 @@ fun calculateSD(numArray: FloatArray): Double {
     }
     return Math.sqrt(standardDeviation / length)
 }
+

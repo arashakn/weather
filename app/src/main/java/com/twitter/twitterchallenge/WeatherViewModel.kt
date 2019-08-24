@@ -19,6 +19,7 @@ import java.util.ArrayList
 
 class WeatherViewModel  : ViewModel(){
     val weatherLiveData = MutableLiveData<WeatherCondition>()
+    val sdLiveData = MutableLiveData<Double>()
     val error = MutableLiveData<Boolean>()
     val progress = MutableLiveData<Boolean>()
     val compositeDisposable  = CompositeDisposable ()
@@ -51,8 +52,6 @@ class WeatherViewModel  : ViewModel(){
         }
     }
 
-
-
     fun getNextNDaysObservable(){
 
             val disposable1 = WeatherAPIClient.getWeatherService().getFutureWeather(1.getFutureWeatherUrl())
@@ -76,7 +75,7 @@ class WeatherViewModel  : ViewModel(){
                 .subscribe(
                     { result ->
                         progress.value = false
-                        println(result)
+                        sdLiveData.value = result
 
 
                     },
@@ -88,15 +87,10 @@ class WeatherViewModel  : ViewModel(){
         compositeDisposable.add(zipped)
         }
 
-
-
-
     override fun onCleared() {
         super.onCleared()
         compositeDisposable?.let {
             compositeDisposable.clear()
         }
     }
-
-
 }
