@@ -1,4 +1,4 @@
-package com.twitter.twitterchallenge.model
+package com.twitter.challenge.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -8,7 +8,7 @@ data class WeatherCondition (
     val rain : Rain, val clouds: Clouds ,val name : String
 )
 
-data class Coordination (val lon : Float, val lat :Float)
+data class Coordination (val lon : Float?, val lat :Float)
 
 data class Weather (val temp : Float, val pressure : Int , val humidity : Int)
 

@@ -4,5 +4,6 @@
     <string name="temperature">%1$f °C / %2$f °F</string>
     <string name="refresh_cap">Refresh</string>
     <string name="error_message">something went wrong ...</string>
+    <string name="btn_median_text">Get next 5 days median</string>
 
 </resources>

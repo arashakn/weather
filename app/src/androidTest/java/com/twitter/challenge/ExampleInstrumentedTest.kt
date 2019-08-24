@@ -1,4 +1,4 @@
-package com.twitter.twitterchallenge
+package com.twitter.challenge
 
 import androidx.test.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4

@@ -8,8 +8,7 @@
         tools:context=".WeatherActivity"
         android:orientation="vertical"
         android:layout_centerHorizontal="true"
-        android:background="@android:color/darker_gray"
->
+        android:background="@android:color/darker_gray">
 
     <androidx.cardview.widget.CardView
             android:layout_margin="10dip"
@@ -68,5 +67,24 @@
             android:layout_height="wrap_content"
             android:id="@+id/progress_circular"
             android:layout_centerInParent="true"/>
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:id="@+id/sd_five_days"
+              android:layout_above="@+id/btn_median_next_five_days"
+              android:background="@color/colorWhite"
+              android:layout_margin="20dp"
+              android:padding="10dip"
+              android:textAppearance="@style/textMedium"
+              android:visibility="gone"
+    />
+
+    <Button
+            android:id="@+id/btn_median_next_five_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:text="@string/btn_median_text"/>
 
 </RelativeLayout>

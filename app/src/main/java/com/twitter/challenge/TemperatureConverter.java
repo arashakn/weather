@@ -1,4 +1,4 @@
-package com.twitter.twitterchallenge;
+package com.twitter.challenge;
 
 public class TemperatureConverter {
     /**
@@ -10,4 +10,5 @@ public class TemperatureConverter {
     public static float celsiusToFahrenheit(float temperatureInCelsius) {
         return temperatureInCelsius * 1.8f + 32;
     }
+
 }

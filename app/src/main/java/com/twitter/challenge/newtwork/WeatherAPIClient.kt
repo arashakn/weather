@@ -1,9 +1,9 @@
-package com.twitter.twitterchallenge.newtwork
+package com.twitter.challenge.newtwork
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
-import com.twitter.twitterchallenge.WeatherApplication
+import com.twitter.challenge.WeatherApplication
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -26,7 +26,6 @@ object WeatherAPIClient {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         val httpClient = OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .readTimeout(60,  TimeUnit.SECONDS)
             .readTimeout(60,  TimeUnit.SECONDS)
             .cache(myCache)
             .addInterceptor { chain ->
